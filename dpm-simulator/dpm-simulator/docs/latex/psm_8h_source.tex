@@ -1,0 +1,51 @@
+\doxysection{psm.\+h}
+\hypertarget{psm_8h_source}{}\label{psm_8h_source}\index{inc/psm.h@{inc/psm.h}}
+\mbox{\hyperlink{psm_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ \_INCLUDE\_PSM\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ \_INCLUDE\_PSM\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ PSM\_N\_STATES\ 3}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ PSM\_TIME\_UNIT\ \ \ 1e-\/03}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ PSM\_POWER\_UNIT\ \ 1e-\/03}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ PSM\_ENERGY\_UNIT\ 1e-\/03}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ PSM\_STATE\_RUN\ 0}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ PSM\_STATE\_IDLE\ \ \ 1}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ PSM\_STATE\_SLEEP\ \ 2}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}};}
+\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}};}
+\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{group__psm__type_gaeaa8d21a0c6846575274b917e706fad3}{psm\_energy\_t}};}
+\DoxyCodeLine{00052\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{group__psm__type_ga7fbd9eadbf26d054cb48b9f833fe3f64}{psm\_power\_t}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ PSM\_STATE\_NAME(val)\ (val\ ==\ PSM\_STATE\_RUN\ ?\ "{}Run"{}\ :\ (val\ ==\ PSM\_STATE\_IDLE\ ?\ "{}Idle"{}\ :\ "{}Sleep"{}\ ))}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{group__psm__type_ga7fbd9eadbf26d054cb48b9f833fe3f64}{psm\_power\_t}}\ \ \mbox{\hyperlink{structpsm__t_ae12eb219be1861d856fb4774aa960132}{power}}[\mbox{\hyperlink{psm_8h_a7852bbd44df8904e0d37cbb010963bc7}{PSM\_N\_STATES}}];\ }
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{group__psm__type_gaeaa8d21a0c6846575274b917e706fad3}{psm\_energy\_t}}\ \mbox{\hyperlink{structpsm__t_adb1cf38cb82715e056bc0f1ebbc99525}{tran\_energy}}[\mbox{\hyperlink{psm_8h_a7852bbd44df8904e0d37cbb010963bc7}{PSM\_N\_STATES}}][\mbox{\hyperlink{psm_8h_a7852bbd44df8904e0d37cbb010963bc7}{PSM\_N\_STATES}}];\ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ \ \ \mbox{\hyperlink{structpsm__t_abecc526f226a60ee380d37870db0b671}{tran\_time}}[\mbox{\hyperlink{psm_8h_a7852bbd44df8904e0d37cbb010963bc7}{PSM\_N\_STATES}}][\mbox{\hyperlink{psm_8h_a7852bbd44df8904e0d37cbb010963bc7}{PSM\_N\_STATES}}];\ }
+\DoxyCodeLine{00068\ \}\ \mbox{\hyperlink{structpsm__t}{psm\_t}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{psm_8h_ad5c00c61f8f4d194ffe789410b023625}{psm\_read}}(\mbox{\hyperlink{structpsm__t}{psm\_t}}\ *p,\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{psm_8h_a4793756320e0e0bc13167956cd0a2914}{psm\_print}}(\mbox{\hyperlink{structpsm__t}{psm\_t}}\ p);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{psm_8h_a8278c6a0a7065b0fd9489a0edd73467a}{psm\_tran\_allowed}}(\mbox{\hyperlink{structpsm__t}{psm\_t}}\ psm,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ curr,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ next);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00111\ \mbox{\hyperlink{group__psm__type_gaeaa8d21a0c6846575274b917e706fad3}{psm\_energy\_t}}\ \mbox{\hyperlink{psm_8h_a01a0a0dd2f228d86ee7309359809c142}{psm\_tran\_energy}}(\mbox{\hyperlink{structpsm__t}{psm\_t}}\ psm,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ curr,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ next);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00123\ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ \mbox{\hyperlink{psm_8h_a214198020370e577e3a2c236f20c2d37}{psm\_tran\_time}}(\mbox{\hyperlink{structpsm__t}{psm\_t}}\ psm,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ curr,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ next);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00135\ \mbox{\hyperlink{group__psm__type_gaeaa8d21a0c6846575274b917e706fad3}{psm\_energy\_t}}\ \mbox{\hyperlink{psm_8h_ae1d9cb7939d839a456a1ebab759355eb}{psm\_state\_energy}}(\mbox{\hyperlink{structpsm__t}{psm\_t}}\ psm,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ curr,\ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ time);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,53 @@
+\doxysection{dpm\+\_\+policies.\+h}
+\hypertarget{dpm__policies_8h_source}{}\label{dpm__policies_8h_source}\index{inc/dpm\_policies.h@{inc/dpm\_policies.h}}
+\mbox{\hyperlink{dpm__policies_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ \_INCLUDE\_DPM\_POLICIES\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ \_INCLUDE\_DPM\_POLICIES\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{psm_8h}{inc/psm.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DPM\_HIST\_WIND\_SIZE\ 5}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ DPM\_N\_THRESHOLDS\ 2}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ SIMULATION\_TIME\_STEP\ 1e-\/4}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ DPM\_TIMEOUT\ 0}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ DPM\_HISTORY\ 1}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{dpm__policies_8h_a23062a56d50a71161d79d0145e7c6fcf}{dpm\_policy\_t}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{/*\ Day2:\ you\ can\ add/change\ stuff\ here\ */}}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ timeout;}
+\DoxyCodeLine{00048\ \}\ \mbox{\hyperlink{structdpm__timeout__params}{dpm\_timeout\_params}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{/*\ Day3:\ you\ can\ add/change\ stuff\ here\ */}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structdpm__history__params_a7d50d5f2e0d1b928c2fbce10d41c3cf4}{alpha}}[\mbox{\hyperlink{group__dpm__params_ga5ea6ed63ca9b0640f73ee2424ef1e889}{DPM\_HIST\_WIND\_SIZE}}];\ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ \mbox{\hyperlink{structdpm__history__params_a08a53313d835d7e7b9ea0b9ae2467ffc}{threshold}}[\mbox{\hyperlink{group__dpm__params_ga8f42480e9b523c822c6068596256bc4a}{DPM\_N\_THRESHOLDS}}];\ }
+\DoxyCodeLine{00058\ \}\ \mbox{\hyperlink{structdpm__history__params}{dpm\_history\_params}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ duration;}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ arrival;}
+\DoxyCodeLine{00068\ \}\ \mbox{\hyperlink{structdpm__work__item}{dpm\_work\_item}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{dpm__policies_8h_ae9744421f5065ed4d422088c370903fc}{dpm\_simulate}}(\mbox{\hyperlink{structpsm__t}{psm\_t}}\ psm,\ \mbox{\hyperlink{dpm__policies_8h_a23062a56d50a71161d79d0145e7c6fcf}{dpm\_policy\_t}}\ sel\_policy,\ \mbox{\hyperlink{structdpm__timeout__params}{dpm\_timeout\_params}}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ tparams,\ \mbox{\hyperlink{structdpm__history__params}{dpm\_history\_params}}\ hparams,\ \textcolor{keywordtype}{char}*\ fwl);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00095\ \mbox{\hyperlink{structdpm__work__item}{dpm\_work\_item}}*\ \mbox{\hyperlink{dpm__policies_8h_a33ae25a03a6446c4c79258e521096de5}{dpm\_init\_work\_queue}}(\textcolor{keywordtype}{int}\ *num\_items,\ \textcolor{keywordtype}{char}\ *fwl);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{dpm__policies_8h_aeccf893f710f0c40746e0168a2bdb229}{dpm\_decide\_state}}(\mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ *next\_state,\ \mbox{\hyperlink{group__psm__type_gab3c5521443d52fa6d51222008bb2057e}{psm\_state\_t}}\ prev\_state,\ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ t\_curr,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ t\_inactive\_start,\ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ *history,\ \mbox{\hyperlink{dpm__policies_8h_a23062a56d50a71161d79d0145e7c6fcf}{dpm\_policy\_t}}\ policy,}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structdpm__timeout__params}{dpm\_timeout\_params}}\ tparams,\ \mbox{\hyperlink{structdpm__history__params}{dpm\_history\_params}}\ hparams);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00123\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dpm__policies_8h_a36797c946e32398ff908d9a167104408}{dpm\_init\_history}}(\mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ *h);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00132\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dpm__policies_8h_a320c6d500c490ee1fc3a9baa569ec060}{dpm\_update\_history}}(\mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ *h,\ \mbox{\hyperlink{group__psm__type_gaa86b7e9d3e627cccf6bcd5fc355ae44c}{psm\_time\_t}}\ new\_inactive);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
