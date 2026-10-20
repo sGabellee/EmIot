@@ -5,7 +5,25 @@ int parse_args(int argc, char *argv[], char *fwl, psm_t *psm, dpm_policy_t
         *hparams)
 {
     int cur = 1;
+
+    tparams->target_state = PSM_STATE_IDLE;
     while(cur < argc) {
+
+        // idle \ sleep
+        if(strcmp(argv[cur], "-ts") == 0) {
+            if(argc > cur + 1) {
+                cur++;
+                if(strcmp(argv[cur], "idle") == 0) {
+                    tparams->target_state = PSM_STATE_IDLE;
+                } else if(strcmp(argv[cur], "sleep") == 0) {
+                    tparams->target_state = PSM_STATE_SLEEP;
+                } else {
+                    printf("[error] -ts accepts only 'idle' or 'sleep'\n");
+                    return 0;
+                }
+            }
+            else return 0;
+        }
 
         if(strcmp(argv[cur], "-help") == 0) {
             print_command_line();
@@ -58,6 +76,7 @@ void print_command_line(){
 	printf("\n******************************************************************************\n");
 	printf(" DPM simulator: \n");
 	printf("\t-t <timeout>: timeout of the timeout policy\n");
+	printf("\t-ts <idle|sleep>: low-power state entered at timeout (default: idle)\n");
 	printf("\t-h <Value1> …<Value5> <Threshold1> <Threshold2>: history-based policy \n");
 	printf("\t   <Value1-5> value of coefficients\n");
 	printf("\t   <Threshold1-2> predicted time thresholds\n");

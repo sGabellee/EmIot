@@ -45,6 +45,7 @@ typedef int dpm_policy_t;
 typedef struct {
     /* Day2: you can add/change stuff here */
     psm_time_t timeout;
+    psm_state_t target_state; /**< low-power state entered when the timeout expires (PSM_STATE_IDLE or PSM_STATE_SLEEP) */
 } dpm_timeout_params;
 
 /**
