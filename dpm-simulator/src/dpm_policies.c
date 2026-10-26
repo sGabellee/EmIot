@@ -149,7 +149,15 @@ int dpm_decide_state(psm_state_t *next_state, psm_state_t prev_state, psm_time_t
 
         case DPM_HISTORY:
             /* Day 3: EDIT */
-            *next_state = PSM_STATE_RUN;
+            psm_time_t Tpred_i = hparams.alpha[0] + hparams.alpha[1] * history[0] + hparams.alpha[2] * history[1] + hparams.alpha[3] * history[2];
+            if(Tpred_i > hparams.threshold[1]){     //SLEEP CASE
+                *next_state = PSM_STATE_SLEEP;
+            } else if (Tpred_i >= hparams.threshold[0]) {
+                *next_state = PSM_STATE_IDLE;
+            } else {
+                *next_state = PSM_STATE_RUN;
+            }
+            
             break;
 
         default:
