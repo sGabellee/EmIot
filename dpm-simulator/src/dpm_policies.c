@@ -146,6 +146,25 @@ int dpm_decide_state(psm_state_t *next_state, psm_state_t prev_state, psm_time_t
                 *next_state = PSM_STATE_RUN;
             }
             break;
+        
+        /*EXTRA POINTS 2*/
+        case DPM_TIMEOUT_EXTRA:
+          if (t_curr > t_inactive_start + tparams.timeout_extra) {
+                if (prev_state == PSM_STATE_IDLE) {
+                    // se sono in idle devo passare prima da run e poi andare in sleep non c'è arco diretto da idle a sleep
+                    *next_state = PSM_STATE_RUN;
+                } else {
+                    // sono in run e quindi passo in sleep
+                    *next_state = PSM_STATE_SLEEP;
+                }
+                //scaduto timeout per andare in idle
+            } else if (t_curr > t_inactive_start + tparams.timeout) {
+                *next_state = PSM_STATE_IDLE; 
+            } else {
+                //se nulla vado/rimango in run
+                *next_state = PSM_STATE_RUN;
+            }
+            break;
 
         case DPM_HISTORY:
             /* Day 3: EDIT */

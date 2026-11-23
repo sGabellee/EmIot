@@ -35,6 +35,7 @@
 /** history-based policy */
 #define DPM_HISTORY 1
 /** @} */
+#define DPM_TIMEOUT_EXTRA 2 
 
 /** Type alias for DPM policy IDs */
 typedef int dpm_policy_t;
@@ -45,6 +46,7 @@ typedef int dpm_policy_t;
 typedef struct {
     /* Day2: you can add/change stuff here */
     psm_time_t timeout;
+    psm_time_t timeout_extra;  //added to do the extra point of the assignment 2 (timeout of sleep state)
     psm_state_t target_state; /**< low-power state entered when the timeout expires (PSM_STATE_IDLE or PSM_STATE_SLEEP) */
 } dpm_timeout_params;
 

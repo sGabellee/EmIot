@@ -39,6 +39,22 @@ int parse_args(int argc, char *argv[], char *fwl, psm_t *psm, dpm_policy_t
             else return	0;
         }
 
+        //flag -te per fare policy dpm timeout extra point 
+        if (strcmp(argv[cur], "-te") == 0) {
+            *selected_policy = DPM_TIMEOUT_EXTRA;
+            if (argc > cur + 2) {
+                tparams->timeout = atof(argv[++cur]);
+                tparams->timeout_extra = atof(argv[++cur]);
+                //check perchè timeout per sleep è sempre maggiore di timeout per idle
+                if (tparams->timeout_extra <= tparams->timeout) {
+                    printf("[error] timeout_sleep must be greater than timeout_idle\n");
+                    return 0;
+                }
+            } else {
+                return 0;
+            }
+        }
+
         // set policy to history based and get parameters and thresholds
         if(strcmp(argv[cur], "-h") == 0) {
             *selected_policy = DPM_HISTORY;
@@ -77,6 +93,7 @@ void print_command_line(){
 	printf(" DPM simulator: \n");
 	printf("\t-t <timeout>: timeout of the timeout policy\n");
 	printf("\t-ts <idle|sleep>: low-power state entered at timeout (default: idle)\n");
+    printf("\t-te <t_idle> <t_sleep>: two-stage timeout policy (extra point) (RUN->IDLE->RUN->SLEEP)\n");
 	printf("\t-h <Value1> …<Value5> <Threshold1> <Threshold2>: history-based policy \n");
 	printf("\t   <Value1-5> value of coefficients\n");
 	printf("\t   <Threshold1-2> predicted time thresholds\n");
